@@ -1,4 +1,8 @@
-body, ul {
+* {
+    box-sizing: border-box;
+}
+
+body, ul, li, h1, h2, p {
     margin: 0;
     padding: 0;
 }
@@ -12,6 +16,26 @@ header {
 
 main {
     padding: 20px;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#search {
+    display: flex;
+    padding: 20px 0;
+    gap: 5px;
+}
+
+#searchInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #eee;
+}
+
+#searchBtn {
+    width: 80px;
+    border: 1px solid #eee;
 }
 
 #movies {
@@ -23,6 +47,28 @@ main {
 }
 
 #movies li {
+    display: flex;
+    flex-direction: column;
     width: 300px;
     border: 1px solid #eee;
+}
+
+#movies li img {
+    border-bottom: 1px solid #eee;
+}
+
+#movies li .title {
+    padding: 10px 16px;
+}
+
+#movies li .overview {
+    padding: 10px 16px;
+}
+
+#movies li .vote_average {
+    padding: 10px 16px;
+}
+
+.hide {
+    display: none
 }

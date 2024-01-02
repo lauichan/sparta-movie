@@ -12,6 +12,11 @@
         <h1>내배캠 최고 평점 영화 리스트</h1>
     </header>
     <main>
+        <form id="search" onsubmit="searchMovie(event)">
+            <input id="searchInput" type="text" placeholder="검색어를 입력해주세요.">
+            <button id="searchBtn" type="submit" onclick="searchMovie()">검색</button>
+        </form>
+        
         <ul id="movies">
             
         </ul>
