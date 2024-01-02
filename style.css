@@ -1,0 +1,28 @@
+body, ul {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: lightgray;
+}
+
+main {
+    padding: 20px;
+}
+
+#movies {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+#movies li {
+    width: 300px;
+    border: 1px solid #eee;
+}
