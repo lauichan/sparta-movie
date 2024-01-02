@@ -67,8 +67,5 @@ main {
 
 #movies li .vote_average {
     padding: 10px 16px;
-}
-
-.hide {
-    display: none
+    margin-top: auto;
 }
