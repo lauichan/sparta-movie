@@ -11,14 +11,15 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
     .then(response => createCard(response))
     .catch(err => console.error(err));
 
+document.getElementById("searchInput").focus();
+
 function createCard(response) {
     let movies = response.results;
     movies.forEach(movie => {
-        console.log(movie)
         document.getElementById("movies").innerHTML += `
             <li>
-                <h2 class="title">${movie.title}</h2>
                 <img class="poster" src="http://image.tmdb.org/t/p/w300${movie.poster_path}"/>
+                <h2 class="title">${movie.title}</h2>
                 <p class="overview">${movie.overview}</p>
                 <p class="vote_average">${movie.vote_average}</p>
             </li>`
@@ -26,7 +27,7 @@ function createCard(response) {
 }
 
 function searchMovie(event) {
-    event.preventDefault()
+    event.preventDefault();
     const keyword = document.querySelector("#searchInput").value.toLowerCase();
     [...document.querySelectorAll("#movies > li")].filter((li) => {
         const title = li.querySelector("h2").textContent.toLowerCase();

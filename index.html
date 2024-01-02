@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./script.js"></script>
+    <script defer src="./script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
     <main>
         <form id="search" onsubmit="searchMovie(event)">
             <input id="searchInput" type="text" placeholder="검색어를 입력해주세요.">
-            <button id="searchBtn" type="submit" onclick="searchMovie()">검색</button>
+            <button id="searchBtn" type="submit">검색</button>
         </form>
         
         <ul id="movies">
