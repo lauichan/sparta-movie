@@ -34,7 +34,7 @@ function searchMovie(event) {
     const keyword = document.querySelector("#searchInput").value.toLowerCase();
     [...document.querySelectorAll("#movies > li")].filter((li) => {
         const title = li.querySelector("h2").textContent.toLowerCase();
-        if (!title.includes(keyword)) li.classList.add("hide")
+        (!title.includes(keyword)) ? li.classList.add("hide") : li.classList.remove("hide");
     });
 }
 
