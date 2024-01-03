@@ -18,11 +18,11 @@ function createCard(response) {
     movies.forEach(movie => {
         document.getElementById("movies").innerHTML += `
             <li onclick="alert('영화id: ${movie.id}')">
-                <img class="poster" src="http://image.tmdb.org/t/p/w300${movie.poster_path}"/>
+                <img class="poster" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" width=300 height=450/>
                 <h2 class="title">${movie.title}</h2>
                 <p class="overview">${movie.overview}</p>
-                <p class="vote_average">${movie.vote_average}</p>
-            </li>`
+                <p class="vote_average"><span class="star">★</span> ${(movie.vote_average * 10).toFixed(2)}</p>
+            </li>`;
     });
 }
 
