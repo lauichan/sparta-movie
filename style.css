@@ -98,3 +98,7 @@ main {
     display: block;
     height: 450px;
 }
+
+.hide {
+    display: none !important;
+}
