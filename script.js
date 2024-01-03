@@ -1,4 +1,4 @@
-const fetchData = () => {
+const fetchData = async () => {
     const options = {
         method: 'GET',
         headers: {
@@ -7,10 +7,13 @@ const fetchData = () => {
         }
     };
 
-    fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
-        .then(response => response.json())
-        .then(response => createCard(response))
-        .catch(err => console.error(err));
+    try {
+        const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options);
+        const data = await response.json();
+        createCard(data);
+    } catch (err) {
+        console.error(err);
+    }    
 };
 
 function createCard(response) {
