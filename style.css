@@ -7,6 +7,15 @@ body, ul, li, h1, h2, p {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    color: royalblue;
+}
+
 header {
     max-width: 1300px;
     width: 100%;
@@ -14,12 +23,14 @@ header {
     padding: 20px;
 }
 
-header a {
-    text-decoration: none;
-    color: #333;
+main {
+    padding: 20px;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-main {
+footer {
     padding: 20px;
     max-width: 1300px;
     width: 100%;
