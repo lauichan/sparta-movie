@@ -66,10 +66,14 @@ function createGenreList(ele_id, genre_ids) {
 function searchMovie(event) {
     event.preventDefault();
     const keyword = document.querySelector("#searchInput").value.toLowerCase();
-    [...document.querySelectorAll("#movies > li")].forEach((li) => {
-        const title = li.querySelector("h2").textContent.toLowerCase();
-        li.classList.toggle("hide", !title.includes(keyword));
+    [...document.querySelectorAll("#movies > .card")].forEach((card) => {
+        card.classList.toggle("hide", !searchBy(keyword, card));
     });
+}
+
+function searchBy(keyword, card) {
+    const title = card.querySelector("h2").textContent.toLowerCase() + card.querySelector(".genre").textContent.toLowerCase();
+    return title.includes(keyword);
 }
 
 fetchData();
