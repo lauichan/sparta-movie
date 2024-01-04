@@ -1,3 +1,25 @@
+const genreList = [
+    { id: 28, name: "Action" },
+    { id: 12, name: "Adventure" },
+    { id: 16, name: "Animation" },
+    { id: 35, name: "Comedy" },
+    { id: 80, name: "Crime" },
+    { id: 99, name: "Documentary" },
+    { id: 18, name: "Drama" },
+    { id: 10751, name: "Family" },
+    { id: 14, name: "Fantasy" },
+    { id: 36, name: "History" },
+    { id: 27, name: "Horror" },
+    { id: 10402, name: "Music" },
+    { id: 9648, name: "Mystery" },
+    { id: 10749, name: "Romance" },
+    { id: 878, name: "Science Fiction" },
+    { id: 10770, name: "TV Movie" },
+    { id: 53, name: "Thriller" },
+    { id: 10752, name: "War" },
+    { id: 37, name: "Western" }
+];
+
 const fetchData = async () => {
     const options = {
         method: 'GET',
@@ -13,20 +35,32 @@ const fetchData = async () => {
         createCard(data);
     } catch (err) {
         console.error(err);
-    }    
+    }
 };
 
 function createCard(response) {
     let movies = response.results;
     movies.forEach(movie => {
         document.getElementById("movies").innerHTML += `
-            <li onclick="alert('영화id: ${movie.id}')">
+            <div id="${movie.id}" class="card" onclick="alert('영화id: ${movie.id}')">
                 <img class="poster" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" width=300 height=450/>
                 <h2 class="title">${movie.title}</h2>
                 <p class="overview">${movie.overview}</p>
-                <p class="vote_average"><span class="star">★</span> ${(movie.vote_average * 10).toFixed(2)}</p>
-            </li>`;
+                <ul class="genre"></ul>
+                <p class="vote"><span class="star">★</span>${(movie.vote_average * 10).toFixed(2)}</p>
+            </div>`;
+        createGenreList(movie.id, movie.genre_ids);
     });
+}
+
+function createGenreList(ele_id, genre_ids) {
+    let genreName = genre_ids.map(id => {
+        let obj = genreList.find(genre => genre.id === id);
+        return obj.name;
+    });
+    genreName.forEach(genre => {
+        document.getElementById(`${ele_id}`).querySelector(".genre").innerHTML += `<li class="${genre.toLowerCase()}">${genre}</li>`
+    })
 }
 
 function searchMovie(event) {

@@ -2,7 +2,12 @@
     box-sizing: border-box;
 }
 
-body, ul, li, h1, h2, p {
+body,
+ul,
+li,
+h1,
+h2,
+p {
     margin: 0;
     padding: 0;
 }
@@ -12,8 +17,18 @@ a {
     color: #333;
 }
 
+body {
+    margin: 20px;
+}
+
 a:hover {
     color: royalblue;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    
 }
 
 .container {
@@ -25,21 +40,22 @@ a:hover {
 
 #search {
     display: flex;
-    margin-top: 20px;
     gap: 5px;
 }
 
 #searchInput {
     flex-grow: 1;
-    padding: 15px 20px;
-    border: 1px solid #eee;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
     border-radius: 10px;
+    font-size: 100%;
 }
 
 #searchBtn {
     width: 80px;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     border-radius: 10px;
+    font-size: 100%;
 }
 
 #movies {
@@ -50,52 +66,105 @@ a:hover {
     gap: 20px;
 }
 
-#movies li {
-    position:relative;
+#movies .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 300px;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
 }
 
-#movies li img {
-    border-bottom: 1px solid #eee;
+#movies .card img {
+    border-bottom: 1px solid #ddd;
     min-height: 450px;
 }
 
-#movies li .title {
-    padding: 10px 16px;
+#movies .card .title {
+    padding: 8px 16px 5px;
     font-size: 17px;
 }
 
-#movies li .overview {
+#movies .card .overview {
     position: absolute;
     top: 0;
     color: white;
     display: none;
     padding: 20px;
     line-height: 1.7;
-    background: rgba(0,0,0,.7)
+    background: rgba(0, 0, 0, .7)
 }
 
-#movies li .vote_average {
-    color: gray;
-    padding: 10px 16px;
+#movies .genre {
+    display: flex;
+    padding: 5px 16px;
+    list-style: none;
+    font-size: 90%;
+}
+
+#movies .genre li {
+    margin-right: 5px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+#movies .card .vote {
+    padding: 5px 16px 16px;
     margin-top: auto;
 }
 
-#movies li .star {
+#movies .card .star {
     color: orange;
     line-height: 1;
 }
 
-#movies li:hover .overview {
+#movies .card:hover .overview {
     display: block;
     height: 450px;
 }
 
 .hide {
     display: none !important;
+}
+
+#movies .genre .crime {
+    color: crimson;
+    border-color: crimson;
+}
+
+#movies .genre .adventure {
+    color: green;
+    border-color: green;
+}
+
+#movies .genre .drama {
+    color: purple;
+    border-color: purple;
+}
+
+#movies .genre .romance {
+    color: deeppink;
+    border-color: deeppink;
+}
+
+#movies .genre .animation {
+    color: dodgerblue;
+    border-color: dodgerblue;
+}
+
+#movies .genre .comedy {
+    color: goldenrod;
+    border-color: goldenrod;
+}
+
+#movies .genre .action {
+    color: orangered;
+    border-color: orangered;
+}
+
+#movies .genre .fantasy {
+    color: violet;
+    border-color: violet;
 }
