@@ -32,9 +32,9 @@ function createCard(response) {
 function searchMovie(event) {
     event.preventDefault();
     const keyword = document.querySelector("#searchInput").value.toLowerCase();
-    [...document.querySelectorAll("#movies > li")].filter((li) => {
+    [...document.querySelectorAll("#movies > li")].forEach((li) => {
         const title = li.querySelector("h2").textContent.toLowerCase();
-        (!title.includes(keyword)) ? li.classList.add("hide") : li.classList.remove("hide");
+        li.classList.toggle("hide", !title.includes(keyword));
     });
 }
 
