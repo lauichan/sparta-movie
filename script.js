@@ -72,8 +72,8 @@ function searchMovie(event) {
 }
 
 function searchBy(keyword, card) {
-    const title = card.querySelector("h2").textContent.toLowerCase() + card.querySelector(".genre").textContent.toLowerCase();
-    return title.includes(keyword);
+    const text = card.querySelector("h2").textContent.toLowerCase() + card.querySelector(".genre").textContent.toLowerCase();
+    return text.includes(keyword);
 }
 
 fetchData();
