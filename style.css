@@ -28,7 +28,12 @@ a:hover {
 header {
     display: flex;
     justify-content: space-between;
-    
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+header > h1 {
+    flex: 1 0 auto;
 }
 
 .container {
@@ -40,22 +45,30 @@ header {
 
 #search {
     display: flex;
-    gap: 5px;
+    flex: 1 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 #searchInput {
     flex-grow: 1;
     padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
     font-size: 100%;
+    border: none;
+    outline: none;
+}
+
+#searchInput:focus {
+    background-color: aliceblue;
 }
 
 #searchBtn {
     width: 80px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
     font-size: 100%;
+    border: none;
+    border-left: 1px solid #ddd;
+    background: none;
 }
 
 #movies {
