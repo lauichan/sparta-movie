@@ -20,7 +20,9 @@ const genreList = [
     { id: 37, en: "western", ko: "서부" }
 ];
 
-const fetchData = async () => {
+let currentPage = 1;
+
+const fetchData = async (page) => {
     const options = {
         method: 'GET',
         headers: {
@@ -30,12 +32,12 @@ const fetchData = async () => {
     };
 
     try {
-        const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=1', options);
-        const data = await response.json();
-        createCard(data);
+        response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=${page}`, options);
+        data = await response.json();
     } catch (err) {
         console.error(err);
     }
+    createCard(data);
 };
 
 function createCard(response) {
@@ -52,7 +54,7 @@ function cardHTML(movie) {
                 <h2 class="title">${movie.title}</h2>
                 <p class="overview">${movie.overview}</p>
                 <ul class="genre"></ul>
-                <p class="vote"><span class="star">★</span>${(movie.vote_average * 10).toFixed(2)}</p>
+                <p class="vote"><span class="star">★</span>${(movie.vote_average * 10).toFixed(1)}%</p>
             </div>`
 }
 
@@ -77,6 +79,12 @@ function searchBy(keyword, card) {
     return text.includes(keyword);
 }
 
-fetchData();
+function newPage() {
+    currentPage++;
+    fetchData(currentPage);
+    document.getElementById("searchInput").setAttribute("placeholder", `검색어를 입력해주세요. (TOP ${currentPage * 20} 영화 중)`)
+}
+
+fetchData(currentPage);
 
 document.getElementById("searchInput").focus();

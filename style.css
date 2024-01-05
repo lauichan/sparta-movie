@@ -115,10 +115,11 @@ header > h1 {
     padding: 5px 16px;
     list-style: none;
     font-size: 90%;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 #movies .genre li {
-    margin-right: 5px;
     padding: 2px 5px;
     border-radius: 10px;
     border: 1px solid gray;
@@ -131,7 +132,6 @@ header > h1 {
 
 #movies .card .star {
     color: orange;
-    line-height: 1;
 }
 
 #movies .card:hover .overview {
@@ -181,4 +181,14 @@ header > h1 {
 #movies .genre .fantasy {
     color: violet;
     border-color: violet;
+}
+
+.page {
+    border: 1px solid #ddd;
+    background: none;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 100%;
 }
