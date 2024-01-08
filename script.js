@@ -31,6 +31,8 @@ const fetchData = async (page) => {
         }
     };
 
+    let response, data;
+
     try {
         response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=${page}`, options);
         data = await response.json();
