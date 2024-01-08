@@ -1,6 +1,8 @@
 import { fetchData, newPage } from "./movie.js";
 import { searchMovie } from "./search.js";
 
+let currentPage = 1;
+
 fetchData(currentPage);
 
 document.getElementById("new_page").addEventListener("click", newPage);

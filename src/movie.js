@@ -20,8 +20,6 @@ const genreList = [
     { id: 37, en: "western", ko: "서부" }
 ]; //https://api.themoviedb.org/3/genre/movie/list?language=ko 영어버전 + 한글버전
 
-let currentPage = 1;
-
 export const fetchData = async (page) => {
     const options = {
         method: "GET",
