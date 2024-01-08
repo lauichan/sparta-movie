@@ -22,7 +22,7 @@ const genreList = [
 
 let currentPage = 1;
 
-const fetchData = async (page) => {
+export const fetchData = async (page) => {
     const options = {
         method: "GET",
         headers: {
@@ -70,28 +70,8 @@ function createGenreList(ele_id, genre_ids) {
     });
 }
 
-function searchMovie(event) {
-    event.preventDefault();
-    const keyword = document.querySelector("#searchInput").value.toLowerCase();
-    const cards = [...document.querySelectorAll("#movies > .card")];
-
-    let noresult = true;
-
-    cards.forEach((card) => {
-        const text = card.textContent.toLowerCase().includes(keyword);
-        card.classList.toggle("hide", !text);
-        if (text) noresult = false;
-    });
-
-    if (noresult) alert("검색 결과가 없습니다.");
-}
-
-function newPage() {
+export function newPage() {
     currentPage++;
     fetchData(currentPage);
     document.getElementById("searchInput").setAttribute("placeholder", `검색어를 입력해주세요.`);
 }
-
-fetchData(currentPage);
-
-document.getElementById("new_page").addEventListener("click", newPage);

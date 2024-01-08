@@ -1,4 +1,4 @@
-function searchMovie(event) {
+export function searchMovie(event) {
     event.preventDefault();
     const keyword = document.querySelector("#searchInput").value.toLowerCase();
     const cards = [...document.querySelectorAll("#movies > .card")];
@@ -13,12 +13,3 @@ function searchMovie(event) {
 
     if (noresult) alert("검색 결과가 없습니다.");
 }
-
-function newPage() {
-    currentPage++;
-    fetchData(currentPage);
-    document.getElementById("searchInput").setAttribute("placeholder", `검색어를 입력해주세요.`);
-}
-
-document.getElementById("search").addEventListener("submit", searchMovie);
-document.getElementById("searchInput").focus();
