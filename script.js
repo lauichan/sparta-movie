@@ -18,7 +18,7 @@ const genreList = [
     { id: 53, en: "thriller", ko: "스릴러" },
     { id: 10752, en: "war", ko: "전쟁" },
     { id: 37, en: "western", ko: "서부" }
-];
+]; //https://api.themoviedb.org/3/genre/movie/list?language=ko 영어버전 + 한글버전
 
 let currentPage = 1;
 
@@ -84,7 +84,7 @@ function searchBy(keyword, card) {
 function newPage() {
     currentPage++;
     fetchData(currentPage);
-    document.getElementById("searchInput").setAttribute("placeholder", `검색어를 입력해주세요. (TOP ${currentPage * 20} 영화 중)`)
+    document.getElementById("searchInput").setAttribute("placeholder", `검색어를 입력해주세요.`)
 }
 
 fetchData(currentPage);
