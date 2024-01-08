@@ -50,7 +50,7 @@ function createCard(response) {
 
 function cardHTML(movie) {
     return `<div id="${movie.id}" class="card" onclick="alert('영화id: ${movie.id}')">
-                <img class="poster" src="https://image.tmdb.org/t/p/w300${movie.poster_path}" title="${movie.id}" width=300 height=450/>
+                <img class="poster" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" title="${movie.id}"/>
                 <h2 class="title">${movie.title}</h2>
                 <p class="overview">${movie.overview}</p>
                 <ul class="genre"></ul>

@@ -83,6 +83,7 @@ header > h1 {
     position: relative;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     width: 300px;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -90,6 +91,8 @@ header > h1 {
 }
 
 #movies .card img {
+    width: 100%;
+    height: auto;
     border-bottom: 1px solid #ddd;
     min-height: 450px;
 }
