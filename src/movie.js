@@ -62,7 +62,7 @@ function cardHTML(movie) {
 }
 
 function createGenreList(ele_id, genre_ids) {
-    const genreName = genre_ids.map((id) => (obj = genreList.find((genre) => genre.id === id)));
+    const genreName = genre_ids.map((id) => genreList.find((genre) => genre.id === id));
     genreName.forEach((genre) => {
         document
             .getElementById(`${ele_id}`)
@@ -94,6 +94,4 @@ function newPage() {
 
 fetchData(currentPage);
 
-document.getElementById("searchInput").focus();
-document.getElementById("search").addEventListener("submit", searchMovie);
 document.getElementById("new_page").addEventListener("click", newPage);
