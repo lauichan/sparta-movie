@@ -12,14 +12,14 @@
     <body>
         <header class="container">
             <h1><a href="https://lauichan.github.io/tmdb-api-movie/">영화 리스트</a></h1>
-            <form id="search" onsubmit="searchMovie(event)">
+            <form id="search">
                 <input id="searchInput" type="text" placeholder="검색어를 입력해주세요." />
                 <button id="searchBtn" type="submit">검색</button>
             </form>
         </header>
         <main class="container">
             <section id="movies"></section>
-            <button class="page" onclick="newPage()">더 보기</button>
+            <button id="new_page" class="page">더 보기</button>
         </main>
         <footer class="container">
             <p>

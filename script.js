@@ -93,3 +93,5 @@ function newPage() {
 fetchData(currentPage);
 
 document.getElementById("searchInput").focus();
+document.getElementById("search").addEventListener("submit", searchMovie);
+document.getElementById("new_page").addEventListener("click", newPage);
