@@ -1,3 +1,7 @@
+:root {
+    --border-color: #ddd;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -38,7 +42,7 @@ header > h1 {
 #search {
     display: flex;
     flex: 1 0 auto;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -59,7 +63,7 @@ header > h1 {
     width: 80px;
     font-size: 100%;
     border: none;
-    border-left: 1px solid #ddd;
+    border-left: 1px solid var(--border-color);
     background: none;
 }
 
@@ -76,7 +80,7 @@ header > h1 {
     display: flex;
     flex-direction: column;
     width: 300px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -84,7 +88,7 @@ header > h1 {
 #movies .card img {
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
     min-height: 450px;
 }
 
@@ -117,7 +121,7 @@ header > h1 {
 #movies .genre li {
     padding: 2px 5px;
     border-radius: 10px;
-    border: 1px solid gray;
+    border: 1px solid var(--border-color);
 }
 
 #movies .card .vote {
