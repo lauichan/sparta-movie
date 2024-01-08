@@ -2,16 +2,6 @@
     box-sizing: border-box;
 }
 
-body,
-ul,
-li,
-h1,
-h2,
-p {
-    margin: 0;
-    padding: 0;
-}
-
 a {
     text-decoration: none;
     color: #333;
@@ -33,6 +23,8 @@ header {
 }
 
 header > h1 {
+    font-size: 30px;
+    font-weight: bold;
     flex: 1 0 auto;
 }
 
@@ -97,6 +89,7 @@ header > h1 {
 }
 
 #movies .card .title {
+    font-weight: bold;
     padding: 8px 16px 5px;
     font-size: 17px;
 }
