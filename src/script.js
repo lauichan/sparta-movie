@@ -74,14 +74,16 @@ function searchMovie(event) {
     event.preventDefault();
     const keyword = document.querySelector("#searchInput").value.toLowerCase();
     const cards = [...document.querySelectorAll("#movies > .card")];
-    cards.forEach((card) => {
-        card.classList.toggle("hide", !searchBy(keyword, card));
-    });
-}
 
-function searchBy(keyword, card) {
-    const text = card.textContent.toLowerCase();
-    return text.includes(keyword);
+    let noresult = true;
+
+    cards.forEach((card) => {
+        const text = card.textContent.toLowerCase().includes(keyword);
+        card.classList.toggle("hide", !text);
+        if (text) noresult = false;
+    });
+
+    if (noresult) alert("검색 결과가 없습니다.");
 }
 
 function newPage() {
