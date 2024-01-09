@@ -1,24 +1,81 @@
 const genreList = [
-    { id: 28, en: "action", ko: "액션" },
-    { id: 12, en: "adventure", ko: "모험" },
-    { id: 16, en: "animation", ko: "애니메이션" },
-    { id: 35, en: "comedy", ko: "코미디" },
-    { id: 80, en: "crime", ko: "범죄" },
-    { id: 99, en: "documentary", ko: "다큐멘터리" },
-    { id: 18, en: "drama", ko: "드라마" },
-    { id: 10751, en: "family", ko: "가족" },
-    { id: 14, en: "fantasy", ko: "판타지" },
-    { id: 36, en: "history", ko: "역사" },
-    { id: 27, en: "horror", ko: "공포" },
-    { id: 10402, en: "music", ko: "음악" },
-    { id: 9648, en: "mystery", ko: "미스터리" },
-    { id: 10749, en: "romance", ko: "로맨스" },
-    { id: 878, en: "sf", ko: "SF" },
-    { id: 10770, en: "tv_movie", ko: "TV 영화" },
-    { id: 53, en: "thriller", ko: "스릴러" },
-    { id: 10752, en: "war", ko: "전쟁" },
-    { id: 37, en: "western", ko: "서부" }
-]; //https://api.themoviedb.org/3/genre/movie/list?language=ko 영어버전 + 한글버전
+    {
+        id: 28,
+        name: "Action"
+    },
+    {
+        id: 12,
+        name: "Adventure"
+    },
+    {
+        id: 16,
+        name: "Animation"
+    },
+    {
+        id: 35,
+        name: "Comedy"
+    },
+    {
+        id: 80,
+        name: "Crime"
+    },
+    {
+        id: 99,
+        name: "Documentary"
+    },
+    {
+        id: 18,
+        name: "Drama"
+    },
+    {
+        id: 10751,
+        name: "Family"
+    },
+    {
+        id: 14,
+        name: "Fantasy"
+    },
+    {
+        id: 36,
+        name: "History"
+    },
+    {
+        id: 27,
+        name: "Horror"
+    },
+    {
+        id: 10402,
+        name: "Music"
+    },
+    {
+        id: 9648,
+        name: "Mystery"
+    },
+    {
+        id: 10749,
+        name: "Romance"
+    },
+    {
+        id: 878,
+        name: "Science Fiction"
+    },
+    {
+        id: 10770,
+        name: "TV Movie"
+    },
+    {
+        id: 53,
+        name: "Thriller"
+    },
+    {
+        id: 10752,
+        name: "War"
+    },
+    {
+        id: 37,
+        name: "Western"
+    }
+]; //https://api.themoviedb.org/3/genre/movie/list?language=en 영어버전 + 한글버전
 
 export const fetchData = async (page) => {
     const options = {
@@ -33,7 +90,7 @@ export const fetchData = async (page) => {
     let response, data;
 
     try {
-        response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=ko-KR&page=${page}`, options);
+        response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en&page=${page}`, options);
         data = await response.json();
     } catch (err) {
         console.error(err);
@@ -100,8 +157,9 @@ function createGenreList(ele_id, genre_ids) {
 
     genreName.forEach((genre) => {
         const liElement = document.createElement("li");
-        liElement.classList.add(genre.en);
-        liElement.textContent = genre.ko;
+        let className = genre.name.toLowerCase();
+        liElement.classList.add(className);
+        liElement.textContent = genre.name;
         genreListElement.appendChild(liElement);
     });
 }
