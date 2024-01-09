@@ -1,13 +1,13 @@
-import { fetchData } from "./movie.js";
+import { loadPage } from "./movie.js";
 import { searchMovie } from "./search.js";
 
 let currentPage = 1;
 
-fetchData(currentPage);
+loadPage(currentPage);
 
 function morePage() {
     currentPage++;
-    fetchData(currentPage);
+    loadPage(currentPage);
 }
 
 document.getElementById("morePage").addEventListener("click", morePage);

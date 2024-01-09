@@ -1,100 +1,22 @@
-const genreList = [
-    {
-        id: 28,
-        name: "Action"
-    },
-    {
-        id: 12,
-        name: "Adventure"
-    },
-    {
-        id: 16,
-        name: "Animation"
-    },
-    {
-        id: 35,
-        name: "Comedy"
-    },
-    {
-        id: 80,
-        name: "Crime"
-    },
-    {
-        id: 99,
-        name: "Documentary"
-    },
-    {
-        id: 18,
-        name: "Drama"
-    },
-    {
-        id: 10751,
-        name: "Family"
-    },
-    {
-        id: 14,
-        name: "Fantasy"
-    },
-    {
-        id: 36,
-        name: "History"
-    },
-    {
-        id: 27,
-        name: "Horror"
-    },
-    {
-        id: 10402,
-        name: "Music"
-    },
-    {
-        id: 9648,
-        name: "Mystery"
-    },
-    {
-        id: 10749,
-        name: "Romance"
-    },
-    {
-        id: 878,
-        name: "Science Fiction"
-    },
-    {
-        id: 10770,
-        name: "TV Movie"
-    },
-    {
-        id: 53,
-        name: "Thriller"
-    },
-    {
-        id: 10752,
-        name: "War"
-    },
-    {
-        id: 37,
-        name: "Western"
-    }
-]; //https://api.themoviedb.org/3/genre/movie/list?language=en 영어버전 + 한글버전
+let genreList;
 
-export const fetchData = async (page) => {
-    const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODI4OWFhMmJlYzAyYmQ3OGFmNjdmODIzNDNkMDhjOCIsInN1YiI6IjY1OTNiNjdkZWJiOTlkNWUxN2EwMTQ1NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.U9hqR5oF0oqXrbFgqXlC2yY1zj4JGJshGMzZfoGuuLw"
-        }
-    };
+async function loadJSON(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+}
 
-    let response, data;
+const loadGenreList = async () => {
+    const list = await loadJSON(
+        "https://api.themoviedb.org/3/genre/movie/list?api_key=d8289aa2bec02bd78af67f82343d08c8&language=en"
+    );
+    genreList = list.genres;
+};
 
-    try {
-        response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en&page=${page}`, options);
-        data = await response.json();
-    } catch (err) {
-        console.error(err);
-    }
+export const loadPage = async (page) => {
+    const data = await loadJSON(
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=d8289aa2bec02bd78af67f82343d08c8&language=en&page=${page}`
+    );
     createCard(data);
 };
 
@@ -163,3 +85,5 @@ function createGenreList(ele_id, genre_ids) {
         genreListElement.appendChild(liElement);
     });
 }
+
+loadGenreList();
