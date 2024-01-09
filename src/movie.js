@@ -23,21 +23,11 @@ export const loadPage = async (page) => {
 
 function createCard(response) {
     const movies = response.results;
-    let cardList = document.getElementById("movies");
 
     movies.forEach((movie) => {
-        cardList.appendChild(cardHTML(movie));
+        document.getElementById("movies").appendChild(cardHTML(movie));
         createGenreList(movie.id, movie.genre_ids);
     });
-
-    cardList.addEventListener("click", handleClickCard);
-
-    function handleClickCard(event) {
-        if (event.target === cardList) return;
-        let target = event.target.matches(".card") ? event.target : event.target.parentNode;
-        alert(`영화 id: ${target.id}`);
-        target.classList.toggle("click");
-    }
 }
 
 function cardHTML(movie) {
@@ -84,4 +74,13 @@ function createGenreList(ele_id, genre_ids) {
         liElement.textContent = genre.name;
         genreListElement.appendChild(liElement);
     });
+}
+
+export function handleClickCard(event) {
+    const cardList = document.getElementById("movies");
+    if (event.target === cardList) return;
+    let target = event.target.matches("div") ? event.target : event.target.parentNode;
+    alert(`영화 id: ${target.id}`);
+    target.classList.toggle("click");
+    console.log("click");
 }
