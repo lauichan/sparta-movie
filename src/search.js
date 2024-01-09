@@ -11,5 +11,5 @@ export function searchMovie(event) {
         return text;
     });
 
-    if (!result) alert("검색 결과가 없습니다.");
+    if (result.length === 0) alert("검색 결과가 없습니다.");
 }
