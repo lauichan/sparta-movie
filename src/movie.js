@@ -43,6 +43,8 @@ export const fetchData = async (page) => {
 
 function createCard(response) {
     const movies = response.results;
+    let cardList = document.getElementById("movies");
+
     movies.forEach((movie) => {
         cardList.appendChild(cardHTML(movie));
         createGenreList(movie.id, movie.genre_ids);
@@ -102,10 +104,4 @@ function createGenreList(ele_id, genre_ids) {
         liElement.textContent = genre.ko;
         genreListElement.appendChild(liElement);
     });
-}
-
-export function newPage() {
-    currentPage++;
-    fetchData(currentPage);
-    document.getElementById("searchInput").setAttribute("placeholder", `검색어를 입력해주세요.`);
 }
