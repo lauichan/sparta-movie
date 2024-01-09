@@ -6,16 +6,18 @@ async function loadJSON(url) {
     return data;
 }
 
+const loadGenre = async () => {
+    const response = await loadJSON(
+        "https://api.themoviedb.org/3/genre/movie/list?api_key=d8289aa2bec02bd78af67f82343d08c8&language=en"
+    );
+    genreList = response.genres;
+};
+
 export const loadPage = async (page) => {
     const data = await loadJSON(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=d8289aa2bec02bd78af67f82343d08c8&language=en&page=${page}`
     );
-    if (page === 0) {
-        const list = await loadJSON(
-            "https://api.themoviedb.org/3/genre/movie/list?api_key=d8289aa2bec02bd78af67f82343d08c8&language=en"
-        );
-        genreList = list.genres;
-    }
+    await loadGenre();
     createCard(data);
 };
 
