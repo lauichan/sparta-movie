@@ -13,7 +13,7 @@ const genreList = [
     { id: 10402, en: "music", ko: "음악" },
     { id: 9648, en: "mystery", ko: "미스터리" },
     { id: 10749, en: "romance", ko: "로맨스" },
-    { id: 878, en: "science Fiction", ko: "SF" },
+    { id: 878, en: "sf", ko: "SF" },
     { id: 10770, en: "tv_movie", ko: "TV 영화" },
     { id: 53, en: "thriller", ko: "스릴러" },
     { id: 10752, en: "war", ko: "전쟁" },
@@ -44,27 +44,63 @@ export const fetchData = async (page) => {
 function createCard(response) {
     const movies = response.results;
     movies.forEach((movie) => {
-        document.getElementById("movies").innerHTML += cardHTML(movie);
+        cardList.appendChild(cardHTML(movie));
         createGenreList(movie.id, movie.genre_ids);
     });
+
+    cardList.addEventListener("click", handleClickCard);
+
+    function handleClickCard(event) {
+        if (event.target === cardList) return;
+        let target = event.target.matches(".card") ? event.target : event.target.parentNode;
+        alert(`영화 id: ${target.id}`);
+        target.classList.toggle("click");
+    }
 }
 
 function cardHTML(movie) {
-    return `<div id="${movie.id}" class="card" onclick="alert('영화id: ${movie.id}')">
-                <img class="poster" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" title="${movie.id}"/>
-                <h2 class="title">${movie.title}</h2>
-                <p class="overview">${movie.overview}</p>
-                <ul class="genre"></ul>
-                <p class="vote"><span class="star">★</span>${(movie.vote_average * 10).toFixed(1)}%</p>
-            </div>`;
+    const cardDiv = document.createElement("div");
+    cardDiv.id = movie.id;
+
+    const imgElement = document.createElement("img");
+    imgElement.classList.add("poster");
+    imgElement.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    imgElement.title = movie.id;
+
+    const titleElement = document.createElement("h2");
+    titleElement.classList.add("title");
+    titleElement.textContent = movie.title;
+
+    const overviewElement = document.createElement("p");
+    overviewElement.classList.add("overview");
+    overviewElement.textContent = movie.overview;
+
+    const genreElement = document.createElement("ul");
+    genreElement.classList.add("genre");
+
+    const voteElement = document.createElement("p");
+    voteElement.classList.add("vote");
+
+    voteElement.textContent = `${(movie.vote_average * 10).toFixed(1)}%`;
+
+    cardDiv.appendChild(imgElement);
+    cardDiv.appendChild(titleElement);
+    cardDiv.appendChild(overviewElement);
+    cardDiv.appendChild(genreElement);
+    cardDiv.appendChild(voteElement);
+
+    return cardDiv;
 }
 
 function createGenreList(ele_id, genre_ids) {
-    const genreName = genre_ids.map((id) => genreList.find((genre) => genre.id === id));
+    const genreName = genreList.filter((genre) => genre_ids.includes(genre.id));
+    const genreListElement = document.getElementById(`${ele_id}`).querySelector(".genre");
+
     genreName.forEach((genre) => {
-        document
-            .getElementById(`${ele_id}`)
-            .querySelector(".genre").innerHTML += `<li class="${genre.en}">${genre.ko}</li>`;
+        const liElement = document.createElement("li");
+        liElement.classList.add(genre.en);
+        liElement.textContent = genre.ko;
+        genreListElement.appendChild(liElement);
     });
 }
 
